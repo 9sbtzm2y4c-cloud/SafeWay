@@ -1,0 +1,853 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    width: 390px;
+    min-height: 780px;
+
+    background: #f6f7f9;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* HEADER */
+
+header {
+    height: 58px;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+}
+
+.headerTitle {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 7px;
+}
+
+.accountButton,
+.iconButton {
+    width: 42px;
+    height: 42px;
+
+    min-height: 42px;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #111827;
+
+    font-size: 20px;
+}
+
+
+/* CONTENT */
+
+.content,
+.screen {
+    padding: 28px 20px 35px;
+}
+
+.logo {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 20px;
+
+    background: #111827;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+h1 {
+    font-size: 35px;
+    margin: 15px 0 5px;
+}
+
+.subtitle {
+    color: #777;
+    margin-top: 0;
+}
+
+
+/* CARDS */
+
+.card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+}
+
+.sectionTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionTitle label {
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* ODER-TRENNER */
+
+.orDivider {
+    text-align: center;
+
+    color: #999;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin: 14px 0;
+}
+
+
+/* INPUTS */
+
+input,
+select {
+    width: 100%;
+
+    height: 52px;
+
+    padding: 12px 14px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 13px;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 16px;
+
+    margin-bottom: 12px;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #111827;
+
+    border-color: transparent;
+}
+
+
+/* PASSWORD */
+
+.passwordField {
+    position: relative;
+}
+
+.passwordField input {
+    padding-right: 55px;
+}
+
+.passwordToggle {
+    position: absolute;
+
+    right: 5px;
+    top: 1px;
+
+    width: 45px;
+    height: 45px;
+
+    min-height: 45px;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+
+    color: #555;
+
+    font-size: 18px;
+}
+
+.forgotPassword {
+    width: auto;
+
+    min-height: auto;
+
+    padding: 2px 0;
+
+    margin: -5px 0 14px;
+
+    background: transparent;
+
+    color: #1967d2;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-align: left;
+}
+
+
+/* BUTTONS */
+
+button,
+.maps {
+    display: block;
+
+    width: 100%;
+
+    min-height: 50px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    text-decoration: none;
+}
+
+.primary {
+    background: #111827;
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: #111827;
+
+    border: 1px solid #ddd;
+}
+
+.maps {
+    background: #e8f0fe;
+    color: #1967d2;
+}
+
+.plusButton {
+    width: 40px;
+    height: 40px;
+
+    min-height: 40px;
+
+    padding: 0;
+    margin: 0;
+
+    border-radius: 50%;
+
+    background: #111827;
+
+    color: white;
+
+    font-size: 22px;
+}
+
+.closeButton {
+    width: 40px;
+    height: 40px;
+
+    min-height: 40px;
+
+    padding: 0;
+    margin: 0;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #111;
+
+    font-size: 25px;
+}
+
+
+/* AUTH */
+
+.authScreen {
+    padding-top: 40px;
+}
+
+.authTabs {
+    display: flex;
+
+    gap: 8px;
+
+    background: #f1f5f9;
+
+    padding: 5px;
+
+    border-radius: 13px;
+
+    margin-bottom: 20px;
+}
+
+.authTab {
+    flex: 1;
+
+    min-height: 42px;
+
+    margin: 0;
+
+    background: transparent;
+
+    color: #777;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.authTab.active {
+    background: white;
+
+    color: #111827;
+
+    box-shadow: 0 2px 6px #0001;
+}
+
+
+/* ZIELE */
+
+.destinationItem {
+    background: #f4f4f5;
+
+    border-radius: 15px;
+
+    padding: 13px;
+
+    margin-top: 10px;
+}
+
+.destinationItem.selected {
+    border: 2px solid #22c55e;
+}
+
+.destinationTop {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.destinationIcon {
+    font-size: 24px;
+}
+
+.destinationInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.destinationInfo strong {
+    display: block;
+}
+
+.destinationInfo span {
+    display: block;
+
+    color: #777;
+
+    font-size: 13px;
+
+    margin-top: 3px;
+}
+
+.destinationActions {
+    display: flex;
+
+    gap: 6px;
+
+    margin-top: 10px;
+}
+
+.routeButton {
+    flex: 1;
+
+    background: #e8f0fe;
+
+    color: #1967d2;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    min-height: 38px;
+
+    padding: 7px;
+
+    font-size: 12px;
+}
+
+.deleteDestination {
+    width: 42px;
+
+    background: #ffecec;
+
+    color: #c00;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    min-height: 38px;
+
+    font-size: 18px;
+}
+
+.currentDestination {
+    background: #f4f4f5;
+
+    border-radius: 15px;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+}
+
+.currentDestinationTitle {
+    font-size: 13px;
+
+    color: #777;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+#currentDestinationAddress {
+    font-weight: 600;
+
+    word-break: break-word;
+
+    margin-bottom: 10px;
+}
+
+.currentDestination .secondary {
+    margin-top: 8px;
+
+    min-height: 42px;
+
+    font-size: 14px;
+}
+
+
+/* PERSONEN */
+
+.person {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: #f4f4f5;
+
+    border-radius: 14px;
+
+    padding: 12px;
+
+    margin-top: 10px;
+}
+
+.person.selected {
+    border: 2px solid #22c55e;
+}
+
+.avatar {
+    font-size: 25px;
+}
+
+.personInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.personInfo strong {
+    display: block;
+}
+
+.personInfo span {
+    display: block;
+
+    color: #777;
+
+    font-size: 13px;
+
+    margin-top: 3px;
+}
+
+.personActions {
+    display: flex;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+}
+
+.smallButton {
+    width: auto;
+
+    min-width: 42px;
+
+    min-height: 38px;
+
+    padding: 7px 10px;
+
+    margin: 0;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+}
+
+.selectButton {
+    background: #111827;
+    color: white;
+}
+
+.deleteButton {
+    background: #ffecec;
+    color: #c00;
+}
+
+
+/* EMPTY */
+
+.empty {
+    color: #777;
+
+    text-align: center;
+
+    padding: 15px 0;
+}
+
+
+/* ACCOUNT */
+
+.profileBox {
+    text-align: center;
+
+    background: #f1f5f9;
+
+    border-radius: 20px;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+}
+
+.profileIcon {
+    font-size: 50px;
+}
+
+.profileBox h2 {
+    margin: 8px 0 5px;
+}
+
+.profileBox p {
+    margin: 5px;
+
+    color: #777;
+}
+
+
+/* BEGLEITUNG */
+
+.topbar {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.backButton {
+    width: 45px;
+
+    margin: 0;
+
+    font-size: 25px;
+}
+
+.statusDot {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+}
+
+.map {
+    height: 340px;
+
+    border-radius: 22px;
+
+    margin-top: 15px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            30deg,
+            transparent 48%,
+            #d2d5d8 49%,
+            #d2d5d8 51%,
+            transparent 52%
+        ),
+        linear-gradient(
+            -30deg,
+            transparent 48%,
+            #d2d5d8 49%,
+            #d2d5d8 51%,
+            transparent 52%
+        ),
+        #e9edf0;
+}
+
+.route {
+    position: absolute;
+
+    width: 8px;
+    height: 250px;
+
+    background: #111827;
+
+    border-radius: 10px;
+
+    transform: rotate(30deg);
+
+    left: 185px;
+    top: 45px;
+}
+
+.marker {
+    position: absolute;
+
+    background: white;
+
+    border-radius: 50%;
+
+    padding: 8px;
+
+    font-size: 27px;
+
+    box-shadow: 0 3px 10px #0002;
+}
+
+.start {
+    left: 45px;
+    bottom: 30px;
+}
+
+.end {
+    right: 45px;
+    top: 30px;
+}
+
+.infoBox {
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 20px;
+
+    margin-top: -15px;
+
+    position: relative;
+}
+
+.green {
+    color: #16a34a;
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+.locationStatus {
+    padding: 10px;
+
+    border-radius: 12px;
+
+    background: #f1f5f9;
+
+    font-size: 13px;
+}
+
+.locationShareBox {
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 14px;
+
+    padding: 12px;
+
+    margin: 12px 0;
+
+    color: #166534;
+}
+
+.locationShareBox p {
+    font-size: 13px;
+
+    margin: 5px 0;
+}
+
+#locationTimer {
+    font-weight: 700;
+
+    margin-top: 7px;
+}
+
+
+/* POPUPS */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .55);
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    z-index: 20;
+}
+
+.popup {
+    width: 390px;
+
+    max-width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 28px 28px 0 0;
+
+    padding: 25px 20px;
+}
+
+.popupHeader {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.popupHeader h2 {
+    margin: 0;
+}
+
+
+/* SONSTIGES */
+
+.warningIcon {
+    text-align: center;
+
+    font-size: 50px;
+}
+
+.checkInCountdown {
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: #c00;
+
+    margin: 15px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
