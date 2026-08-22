@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <div class="headerTitle">🛡️ SafeWay</div>
+
+        <div class="headerButtons">
+            <button id="settingsButton" class="iconButton">⚙️</button>
+            <button id="accountButton" class="accountButton">👤</button>
+        </div>
+    </header>
+
+
+    <!-- AUTH START -->
+
+    <main id="authScreen" class="content authScreen">
+
+        <div class="logo">🛡️</div>
+
+        <h1>SafeWay</h1>
+
+        <p class="subtitle" data-i18n="authSubtitle">
+            Bitte registriere dich oder melde dich an.
+        </p>
+
+        <div class="card">
+
+            <div class="authTabs">
+
+                <button
+                    id="registerTab"
+                    class="authTab active"
+                    data-i18n="register">
+                    Registrieren
+                </button>
+
+                <button
+                    id="loginTab"
+                    class="authTab"
+                    data-i18n="login">
+                    Anmelden
+                </button>
+
+            </div>
+
+
+            <!-- REGISTRIEREN -->
+
+            <div id="registerArea">
+
+                <label for="registerName" data-i18n="name">
+                    NAME
+                </label>
+
+                <input
+                    id="registerName"
+                    type="text"
+                    placeholder="Dein Name"
+                    data-i18n-placeholder="namePlaceholder"
+                >
+
+
+                <label for="registerEmail" data-i18n="email">
+                    E-MAIL
+                </label>
+
+                <input
+                    id="registerEmail"
+                    type="email"
+                    placeholder="deine@email.de"
+                >
+
+
+                <label for="registerPassword" data-i18n="password">
+                    PASSWORT
+                </label>
+
+                <div class="passwordField">
+
+                    <input
+                        id="registerPassword"
+                        type="password"
+                        placeholder="Passwort"
+                        data-i18n-placeholder="passwordPlaceholder"
+                    >
+
+                    <button
+                        type="button"
+                        class="passwordToggle"
+                        data-target="registerPassword">
+                        👁️
+                    </button>
+
+                </div>
+
+
+                <label for="registerPhone" data-i18n="phone">
+                    TELEFONNUMMER
+                </label>
+
+                <input
+                    id="registerPhone"
+                    type="tel"
+                    placeholder="+49 176 12345678"
+                >
+
+
+                <button
+                    id="registerButton"
+                    class="primary"
+                    data-i18n="registerAccount">
+                    Account registrieren
+                </button>
+
+            </div>
+
+
+            <!-- ANMELDEN -->
+
+            <div id="loginArea" class="hidden">
+
+                <label for="loginEmail" data-i18n="email">
+                    E-MAIL
+                </label>
+
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="deine@email.de"
+                >
+
+
+                <label for="loginPassword" data-i18n="password">
+                    PASSWORT
+                </label>
+
+                <div class="passwordField">
+
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        placeholder="Passwort"
+                    >
+
+                    <button
+                        type="button"
+                        class="passwordToggle"
+                        data-target="loginPassword">
+                        👁️
+                    </button>
+
+                </div>
+
+
+                <button
+                    id="forgotPasswordButton"
+                    class="forgotPassword"
+                    data-i18n="forgotPassword">
+                    Passwort vergessen?
+                </button>
+
+
+                <button
+                    id="loginButton"
+                    class="primary"
+                    data-i18n="login">
+                    Anmelden
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- STARTSEITE -->
+
+    <main id="homeScreen" class="content hidden">
+
+        <div class="logo">🛡️</div>
+
+        <h1>SafeWay</h1>
+
+        <p class="subtitle" data-i18n="subtitle">
+            Deine Begleitung nach Hause
+        </p>
+
+
+        <!-- GESPEICHERTE ZIELE -->
+
+        <div class="card">
+
+            <div class="sectionTitle">
+
+                <label data-i18n="savedDestinations">
+                    GESPEICHERTE ZIELE
+                </label>
+
+                <button
+                    id="addDestinationButton"
+                    class="plusButton">
+                    ＋
+                </button>
+
+            </div>
+
+            <div id="destinationList"></div>
+
+        </div>
+
+
+        <div class="orDivider" data-i18n="or">
+            oder
+        </div>
+
+
+        <!-- NEUES ZIEL -->
+
+        <div class="card" id="newDestinationCard">
+
+            <label for="destinationInput" data-i18n="newDestination">
+                NEUES ZIEL
+            </label>
+
+            <input
+                id="destinationInput"
+                type="text"
+                placeholder="Adresse eingeben..."
+                data-i18n-placeholder="addressPlaceholder"
+                autocomplete="street-address"
+            >
+
+            <button
+                id="saveDestinationButton"
+                class="primary"
+                data-i18n="saveDestination">
+                ✓ Ziel speichern
+            </button>
+
+            <div id="currentDestination" class="currentDestination hidden">
+                <div class="currentDestinationTitle">
+                    📍 <span data-i18n="currentDestination">Aktuelles Ziel</span>
+                </div>
+
+                <div id="currentDestinationAddress"></div>
+
+                <button
+                    id="changeDestinationButton"
+                    class="secondary"
+                    data-i18n="changeDestination">
+                    Ziel ändern
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- PERSONEN -->
+
+        <div class="card">
+
+            <div class="sectionTitle">
+
+                <label data-i18n="trustedPeople">
+                    VERTRAUENSPERSONEN
+                </label>
+
+                <button
+                    id="addPersonButton"
+                    class="plusButton">
+                    ＋
+                </button>
+
+            </div>
+
+            <div id="peopleList"></div>
+
+        </div>
+
+
+        <button
+            id="startButton"
+            class="primary"
+            data-i18n="startJourney">
+            ▶ Begleitung starten
+        </button>
+
+    </main>
+
+
+    <!-- BEGLEITUNG -->
+
+    <main id="journeyScreen" class="screen hidden">
+
+        <div class="topbar">
+
+            <button
+                id="backButton"
+                class="secondary backButton">
+                ‹
+            </button>
+
+            <strong data-i18n="journeyActive">
+                Begleitung aktiv
+            </strong>
+
+            <span class="statusDot"></span>
+
+        </div>
+
+
+        <div class="map">
+
+            <div class="route"></div>
+
+            <div class="marker start">
+                📍
+            </div>
+
+            <div class="marker end">
+                🏠
+            </div>
+
+        </div>
+
+
+        <div class="infoBox">
+
+            <h2 data-i18n="onWay">
+                Du bist unterwegs
+            </h2>
+
+            <p id="journeyDestination">
+                📍 Ziel
+            </p>
+
+            <p id="journeyPerson">
+                👤 Vertrauensperson
+            </p>
+
+            <div id="locationShareBox" class="locationShareBox hidden">
+
+                <strong data-i18n="locationSharing">
+                    Standortfreigabe
+                </strong>
+
+                <p data-i18n="locationSharingInfo">
+                    Dein Standort wird während der Begleitung geteilt.
+                </p>
+
+                <div id="locationTimer"></div>
+
+            </div>
+
+            <button
+                id="sendLocationButton"
+                class="secondary"
+                data-i18n="sendLocationSms">
+                📤 Standort per SMS senden
+            </button>
+
+            <button
+                id="sendWhatsappButton"
+                class="secondary"
+                data-i18n="sendLocationWhatsapp">
+                💬 Standort per WhatsApp senden
+            </button>
+
+            <a
+                id="journeyMapsButton"
+                class="maps"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="openMaps">
+                🗺️ Route in Google Maps öffnen
+            </a>
+
+            <button
+                id="arrivalButton"
+                class="secondary"
+                data-i18n="arrival">
+                🏠 Angekommen
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ACCOUNT -->
+
+    <div id="accountPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="popupHeader">
+
+                <h2 data-i18n="account">
+                    👤 Account
+                </h2>
+
+                <button
+                    id="closeAccountButton"
+                    class="closeButton">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- ANGEMELDET -->
+
+            <div id="loggedInArea">
+
+                <div class="profileBox">
+
+                    <div class="profileIcon">
+                        👤
+                    </div>
+
+                    <h2 id="profileName">
+                        Name
+                    </h2>
+
+                    <p id="profileEmail">
+                        E-Mail
+                    </p>
+
+                    <p id="profilePhone">
+                        Telefonnummer
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="editAccountButton"
+                    class="primary"
+                    data-i18n="editAccount">
+                    Account bearbeiten
+                </button>
+
+
+                <button
+                    id="logoutButton"
+                    class="secondary"
+                    data-i18n="logout">
+                    Abmelden
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ACCOUNT BEARBEITEN -->
+
+    <div id="editAccountPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="popupHeader">
+
+                <h2 data-i18n="editAccount">
+                    Account bearbeiten
+                </h2>
+
+                <button
+                    id="closeEditAccountButton"
+                    class="closeButton">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label for="editName" data-i18n="name">
+                NAME
+            </label>
+
+            <input
+                id="editName"
+                type="text"
+            >
+
+
+            <label for="editEmail" data-i18n="email">
+                E-MAIL
+            </label>
+
+            <input
+                id="editEmail"
+                type="email"
+            >
+
+
+            <label for="editPassword" data-i18n="password">
+                PASSWORT
+            </label>
+
+            <div class="passwordField">
+
+                <input
+                    id="editPassword"
+                    type="password"
+                >
+
+                <button
+                    type="button"
+                    class="passwordToggle"
+                    data-target="editPassword">
+                    👁️
+                </button>
+
+            </div>
+
+
+            <button
+                id="forgotPasswordFromAccount"
+                class="forgotPassword"
+                data-i18n="forgotPassword">
+                Passwort vergessen?
+            </button>
+
+
+            <label for="editPhone" data-i18n="phone">
+                TELEFONNUMMER
+            </label>
+
+            <input
+                id="editPhone"
+                type="tel"
+            >
+
+
+            <button
+                id="saveAccountChangesButton"
+                class="primary"
+                data-i18n="saveChanges">
+                Änderungen speichern
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PASSWORT VERGESSEN -->
+
+    <div id="forgotPasswordPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="popupHeader">
+
+                <h2 data-i18n="forgotPasswordTitle">
+                    Passwort vergessen
+                </h2>
+
+                <button
+                    id="closeForgotPasswordButton"
+                    class="closeButton">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label for="forgotEmail" data-i18n="email">
+                E-MAIL
+            </label>
+
+            <input
+                id="forgotEmail"
+                type="email"
+                placeholder="deine@email.de"
+            >
+
+
+            <label for="newPassword" data-i18n="newPassword">
+                NEUES PASSWORT
+            </label>
+
+            <div class="passwordField">
+
+                <input
+                    id="newPassword"
+                    type="password"
+                    placeholder="Neues Passwort"
+                >
+
+                <button
+                    type="button"
+                    class="passwordToggle"
+                    data-target="newPassword">
+                    👁️
+                </button>
+
+            </div>
+
+
+            <button
+                id="resetPasswordButton"
+                class="primary"
+                data-i18n="resetPassword">
+                Passwort ändern
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- EINSTELLUNGEN -->
+
+    <div id="settingsPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="popupHeader">
+
+                <h2 data-i18n="settings">
+                    ⚙️ Einstellungen
+                </h2>
+
+                <button
+                    id="closeSettingsButton"
+                    class="closeButton">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label data-i18n="language">
+                SPRACHE
+            </label>
+
+            <select id="languageSelect">
+
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="pt">🇵🇹 Português</option>
+                <option value="nl">🇳🇱 Nederlands</option>
+                <option value="pl">🇵🇱 Polski</option>
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="uk">🇺🇦 Українська</option>
+                <option value="tr">🇹🇷 Türkçe</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="ko">🇰🇷 한국어</option>
+                <option value="hi">🇮🇳 हिन्दी</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- ZIEL POPUP -->
+
+    <div id="destinationPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="popupHeader">
+
+                <h2 data-i18n="savePlace">
+                    📍 Ziel speichern
+                </h2>
+
+                <button
+                    id="closeDestinationButton"
+                    class="closeButton">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label for="destinationName" data-i18n="placeName">
+                NAME DES ZIELS
+            </label>
+
+            <input
+                id="destinationName"
+                type="text"
+                placeholder="z. B. Zuhause"
+            >
+
+
+            <label for="destinationAddress" data-i18n="address">
+                ADRESSE
+            </label>
+
+            <input
+                id="destinationAddress"
+                type="text"
+                placeholder="Adresse"
+            >
+
+
+            <button
+                id="saveNewDestinationButton"
+                class="primary"
+                data-i18n="save">
+                ✓ Speichern
+            </button>
+
+
+            <button
+                id="cancelDestinationButton"
+                class="secondary"
+                data-i18n="cancel">
+                Abbrechen
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERSON POPUP -->
+
+    <div id="personPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="popupHeader">
+
+                <h2 data-i18n="addPerson">
+                    👤 Person hinzufügen
+                </h2>
+
+                <button
+                    id="closePersonButton"
+                    class="closeButton">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label for="personName" data-i18n="name">
+                NAME
+            </label>
+
+            <input
+                id="personName"
+                type="text"
+                placeholder="z. B. Mama"
+            >
+
+
+            <label for="personPhone" data-i18n="phone">
+                TELEFONNUMMER
+            </label>
+
+            <input
+                id="personPhone"
+                type="tel"
+                placeholder="+49 176 12345678"
+            >
+
+
+            <button
+                id="savePersonButton"
+                class="primary"
+                data-i18n="savePerson">
+                ＋ Person speichern
+            </button>
+
+
+            <button
+                id="cancelPersonButton"
+                class="secondary"
+                data-i18n="cancel">
+                Abbrechen
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ANKUNFT -->
+
+    <div id="arrivalPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="warningIcon">
+                🏠
+            </div>
+
+            <h2 class="center" data-i18n="arrived">
+                Du bist angekommen
+            </h2>
+
+            <p class="center" data-i18n="journeyFinished">
+                Deine Begleitung wurde beendet.
+            </p>
+
+            <button
+                id="finishButton"
+                class="primary"
+                data-i18n="done">
+                Fertig
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ROUTE CHECK-IN -->
+
+    <div id="checkInPopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="warningIcon">
+                ⚠️
+            </div>
+
+            <h2 class="center" data-i18n="checkInTitle">
+                Bist du noch okay?
+            </h2>
+
+            <p class="center" data-i18n="checkInText">
+                Es sieht so aus, als würdest du dich nicht mehr in Richtung deines Ziels bewegen. Bitte melde dich.
+            </p>
+
+            <div id="checkInCountdown" class="center checkInCountdown">
+                03:00
+            </div>
+
+            <button
+                id="checkInConfirmButton"
+                class="primary"
+                data-i18n="checkInConfirm">
+                ✓ Ja, mir geht's gut
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- LÖSCHBESTÄTIGUNG -->
+
+    <div id="confirmDeletePopup" class="overlay hidden">
+
+        <div class="popup">
+
+            <div class="warningIcon">
+                ⚠️
+            </div>
+
+            <h2
+                id="confirmDeleteTitle"
+                class="center"
+                data-i18n="deleteTitle">
+                Wirklich löschen?
+            </h2>
+
+            <p
+                id="confirmDeleteText"
+                class="center"
+                data-i18n="deleteText">
+                Möchtest du diesen Eintrag wirklich löschen?
+            </p>
+
+            <button
+                id="confirmDeleteButton"
+                class="primary"
+                data-i18n="delete">
+                Löschen
+            </button>
+
+            <button
+                id="cancelDeleteButton"
+                class="secondary"
+                data-i18n="cancel">
+                Abbrechen
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
